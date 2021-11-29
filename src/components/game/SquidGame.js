@@ -33,6 +33,10 @@ export class SquidGame extends LitElement {
         type: Number,
         attribute: false,
       },
+      loop: {
+        type: Boolean,
+        attribute: false,
+      },
       highScore: {
         type: Number,
         attribute: false,
@@ -107,12 +111,19 @@ export class SquidGame extends LitElement {
     this.highScore = 0;
     this.mute = false;
     this.stop = true;
+    this.loop = true;
     this.stopTimer = 3000;
     this.minGreen = 2000;
   }
 
   firstUpdated() {
     this._mainLoop();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.loop = false;
+    this.mute = true;
   }
 
   render() {
@@ -180,20 +191,24 @@ export class SquidGame extends LitElement {
       greenLight = this.minGreen;
     }
 
-    setTimeout(() => {
-      this._stop();
-      this._playSound('dong');
-    }, greenLight);
+    if (this.loop) {
+      setTimeout(() => {
+        this._stop();
+        this._playSound('dong');
+      }, greenLight);
+    }
   }
 
   _stop() {
     this.stop = true;
     this.traffic.classList.remove('go');
     this.traffic.classList.add('stop');
-    setTimeout(() => {
-      this._go();
-      this._playSound('ding');
-    }, this.stopTimer);
+    if (this.loop) {
+      setTimeout(() => {
+        this._go();
+        this._playSound('ding');
+      }, this.stopTimer);
+    }
   }
 
   _handleClickExit() {

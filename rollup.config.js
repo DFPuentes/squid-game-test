@@ -87,7 +87,10 @@ export default {
       },
     }),
     copy({
-      targets: [{ src: 'assets/images/**/*', dest: 'dist/assets/images' }],
+      targets: [
+        { src: 'assets/images/**/*', dest: 'dist/assets/images' },
+        { src: 'assets/audios/**/*', dest: 'dist/assets/audios' },
+      ],
     }),
   ],
 };

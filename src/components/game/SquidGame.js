@@ -183,6 +183,7 @@ export class SquidGame extends LitElement {
 
     setTimeout(() => {
       this._stop();
+      this._playSound('dong');
     }, greenLight);
   }
 
@@ -192,6 +193,7 @@ export class SquidGame extends LitElement {
     this.traffic.classList.add('stop');
     setTimeout(() => {
       this._go();
+      this._playSound('ding');
     }, this.stopTimer);
   }
 
@@ -224,6 +226,8 @@ export class SquidGame extends LitElement {
 
     this.lastSide = side;
 
+    this._playSound(side);
+
     this._setScore(this.player, this.step, this.highScore);
   }
 
@@ -248,5 +252,10 @@ export class SquidGame extends LitElement {
       this.step = playerScore[0].score;
       this.highScore = playerScore[0].highScore;
     }
+  }
+
+  _playSound(sound) {
+    this.audioPlayer.src = `../../assets/audios/${sound}.mp3`;
+    this.audioPlayer.play();
   }
 }

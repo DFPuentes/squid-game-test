@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { LitElement, html, css } from 'lit';
 import '@material/mwc-button';
 import '@material/mwc-top-app-bar';
@@ -161,7 +162,6 @@ export class SquidGame extends LitElement {
     return this.shadowRoot.querySelector('#traffic mwc-icon');
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _mainLoop() {
     this._updatePlayerScore(this._getScore(this.player));
     setTimeout(() => {
@@ -169,7 +169,6 @@ export class SquidGame extends LitElement {
     }, this.stopTimer);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _go() {
     this.stop = false;
     this.traffic.classList.remove('stop');
@@ -187,7 +186,6 @@ export class SquidGame extends LitElement {
     }, greenLight);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _stop() {
     this.stop = true;
     this.traffic.classList.remove('go');
@@ -197,7 +195,6 @@ export class SquidGame extends LitElement {
     }, this.stopTimer);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _handleClickExit() {
     window.history.pushState(null, '', `/home`);
   }
@@ -230,12 +227,10 @@ export class SquidGame extends LitElement {
     this._setScore(this.player, this.step, this.highScore);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _getRandom(min, max) {
     return Math.random() * (max - min) + min;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _setScore(player, score, highScore) {
     const storage = JSON.parse(window.localStorage.getItem('squidGame')) || [];
     const dataBlock = storage.filter(value => value.player !== player);
@@ -243,13 +238,11 @@ export class SquidGame extends LitElement {
     window.localStorage.setItem('squidGame', JSON.stringify(playerData));
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _getScore(player) {
     const storage = JSON.parse(window.localStorage.getItem('squidGame')) || [];
     return storage.filter(value => value.player === player);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _updatePlayerScore(playerScore) {
     if (Array.isArray(playerScore) && playerScore.length > 0) {
       this.step = playerScore[0].score;

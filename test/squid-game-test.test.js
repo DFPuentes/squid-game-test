@@ -120,6 +120,7 @@ describe('SquidHome Manual', () => {
     element.setAttribute('player', 'dany');
     element.stopTimer = 100;
     element.minGreen = 10000;
+    element.mute = true;
   });
 
   it('Left be should clicked three time but one miss (Manual)', async () => {

@@ -18,9 +18,8 @@ export class SquidGame extends LitElement {
         attribute: false,
       },
       step: { type: Number },
-      stepMiss: {
-        type: Number,
-        attribute: false,
+      mute: {
+        type: Boolean,
       },
       miss: {
         type: Number,
@@ -106,7 +105,7 @@ export class SquidGame extends LitElement {
     this.step = 0;
     this.miss = 0;
     this.highScore = 0;
-    this.stepMiss = 5;
+    this.mute = false;
     this.stop = true;
     this.stopTimer = 3000;
     this.minGreen = 2000;
@@ -255,7 +254,9 @@ export class SquidGame extends LitElement {
   }
 
   _playSound(sound) {
-    this.audioPlayer.src = `../../assets/audios/${sound}.mp3`;
-    this.audioPlayer.play();
+    if (this.mute === false) {
+      this.audioPlayer.src = `../../assets/audios/${sound}.mp3`;
+      this.audioPlayer.play();
+    }
   }
 }

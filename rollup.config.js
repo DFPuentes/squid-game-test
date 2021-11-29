@@ -90,6 +90,7 @@ export default {
       targets: [
         { src: 'assets/images/**/*', dest: 'dist/assets/images' },
         { src: 'assets/audios/**/*', dest: 'dist/assets/audios' },
+        { src: 'assets/fonts/**/*', dest: 'dist/assets/fonts' },
       ],
     }),
   ],

@@ -91,6 +91,7 @@ export default {
         { src: 'assets/images/**/*', dest: 'dist/assets/images' },
         { src: 'assets/audios/**/*', dest: 'dist/assets/audios' },
         { src: 'assets/fonts/**/*', dest: 'dist/assets/fonts' },
+        { src: 'favicon.ico', dest: 'dist/' },
       ],
     }),
   ],

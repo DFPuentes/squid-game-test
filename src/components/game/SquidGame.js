@@ -240,8 +240,6 @@ export class SquidGame extends LitElement {
 
     this.lastSide = side;
 
-    this._playSound(side);
-
     this._setScore(this.player, this.step, this.highScore);
   }
 
